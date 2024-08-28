@@ -1,43 +1,72 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:ATA-FRONT-END
+# Ruby CircleCI Configuration
 version: 2.1
-orbs:
-  node: circleci/node@5
 jobs:
-  build-node:
-    # Build node project
-    executor: node/default
-    working_directory: ~/project/ATA-FRONT-END
-    steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          command: npm run build
-      - run:
-          name: Create the ~/artifacts directory if it doesn't exist
-          command: mkdir -p ~/artifacts
-      # Copy output to artifacts dir
-      - run:
-          name: Copy artifacts
-          command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
-      - store_artifacts:
-          path: ~/artifacts
-          destination: node-build
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-workflows:
   build:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/ruby:3.3.3-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rails-api-{{ checksum "Gemfile.lock" }}
+            - rails-api-
+      # Bundle install dependencies
+      - run: bundle config set path 'vendor/bundle'
+      - run:
+          name: Install dependencies
+          command: bundle check || bundle install --jobs 4 --retry 3
+      - run: sudo apt install -y postgresql-client || true
+      # Store bundle cache
+      - save_cache:
+          key: rails-api-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      
+      # New step: Check commit message format
+      - run:
+          name: Check commit message format
+          command: |
+            #!/bin/bash
+            set -e
+
+            # Get the commit message
+            COMMIT_MSG=$(git log -1 --pretty=%B)
+
+            # Define the allowed prefixes
+            ALLOWED_PREFIXES="Add:|Refactor:|Fix:|Feat:|Docs:|Style:|Test:|Chore:"
+
+            # Check if the commit message starts with an allowed prefix
+            if ! echo "$COMMIT_MSG" | grep -qE "^($ALLOWED_PREFIXES)"; then
+              echo "Error: Commit message must start with one of: $ALLOWED_PREFIXES"
+              exit 1
+            fi
+
+            # Check if the commit message is at least 10 characters long
+            if [ ${#COMMIT_MSG} -lt 10 ]; then
+              echo "Error: Commit message must be at least 10 characters long"
+              exit 1
+            fi
+
+            # Check if the commit message has a body (separated by a blank line)
+            if ! echo "$COMMIT_MSG" | grep -q "^$"; then
+              echo "Error: Commit message must have a body separated by a blank line"
+              exit 1
+            fi
+
+            echo "Commit message format is valid!"
+
+      # ... (rest of the existing steps)
+      
+workflows:
+  build-and-test:
     jobs:
-      - build-node
-    # - deploy:
-    #     requires:
-    #       - build-node
+      - build

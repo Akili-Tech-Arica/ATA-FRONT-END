@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Courses.css";
 import coding from "../../assets/courses_coding.jpg";
 import designer from "../../assets/courses_designer.jpg";
 import marketing from "../../assets/courses_dgmarketing.jpg";
@@ -26,92 +25,100 @@ function Courses() {
   };
 
   return (
-    <div id="courses">
-      <img className="course_img_side" src={sideImg} alt="" />
-      <div className="courses_heading">
-        <h1>Explore Our Courses </h1>
+    <div id="courses" className="bg-gray-100 py-8 px-6 relative">
+      <img
+        className="absolute bottom-0 left-0 w-24 h-24 object-cover"
+        src={sideImg}
+        alt=""
+      />
+      <div className="text-center">
+        <h1 className="font-bold text-3xl text-indigo-700 font-serif mb-8">
+          Explore Our Courses
+        </h1>
       </div>
-      <div className="card">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          className={showInfo1 ? "course_card active " : "course_card"}
+          className={`bg-yellow-300 p-4 relative rounded-lg shadow-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
+            showInfo1 ? "shadow-2xl" : ""
+          }`}
           onMouseEnter={() => handleOpenInfo(1)}
           onMouseLeave={() => handleCloseInfo(1)}
         >
-          <div className="courses_img">
-            <img src={coding} alt="coding" />
-            <div className="courses_icon">
+          <div className="relative">
+            <img
+              className="w-full h-48 object-cover rounded-md mb-4 transition-all duration-300 transform hover:scale-105"
+              src={coding}
+              alt="coding"
+            />
+            <div className="absolute bottom-4 left-4 bg-red-500 p-2 rounded-full text-white transition-transform duration-300">
               <StarIcon />
             </div>
           </div>
-          <h3 className="course_info"> Coding</h3>
+          <h3 className="text-indigo-700 font-bold text-lg">Coding</h3>
           {showInfo1 && (
-            <div className="course_info_details1">
-              <p className="course_details_data">
+            <div className="absolute inset-0 bg-blue-50 p-4 rounded-lg z-10 overflow-auto opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <p className="font-semibold text-sm">
                 AliliTechAfrica offers comprehensive coding courses covering a
                 range of programming languages and frameworks. Whether you're a
                 beginner or an experienced coder, our courses cater to all skill
-                levels. Dive into web development, mobile app creation, or
-                software engineering with expert guidance and hands-on projects.
-                Learn essential frontend and backend skills, master
-                industry-standard tools, and gain the confidence to pursue a
-                successful career in coding.
+                levels.
               </p>
             </div>
           )}
         </div>
+
         <div
-          className={showInfo2 ? "course_card active" : "course_card"}
+          className={`bg-yellow-300 p-4 relative rounded-lg shadow-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
+            showInfo2 ? "shadow-2xl" : ""
+          }`}
           onMouseEnter={() => handleOpenInfo(2)}
           onMouseLeave={() => handleCloseInfo(2)}
         >
-          <div className="courses_img">
-            <img src={designer} alt="design" />
-            <div className="courses_icon">
+          <div className="relative">
+            <img
+              className="w-full h-48 object-cover rounded-md mb-4 transition-all duration-300 transform hover:scale-105"
+              src={designer}
+              alt="design"
+            />
+            <div className="absolute bottom-4 left-4 bg-red-500 p-2 rounded-full text-white transition-transform duration-300">
               <MovingIcon />
             </div>
           </div>
-          <h3 className="course_info">Design</h3>
+          <h3 className="text-indigo-700 font-bold text-lg">Design</h3>
           {showInfo2 && (
-            <div className="course_info_details2">
-              <p className="course_details_data">
+            <div className="absolute inset-0 bg-blue-50 p-4 rounded-lg z-10 overflow-auto opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <p className="font-semibold text-sm">
                 Unlock your creative potential with AliliTechAfrica's graphic
                 design courses. From fundamental design principles to advanced
-                techniques, our courses equip you with the skills needed to
-                craft visually stunning designs. Explore logo design, branding,
-                UI/UX, and digital illustration under the mentorship of seasoned
-                designers. Through practical projects and constructive feedback,
-                refine your design skills and build a standout portfolio that
-                showcases your talent to the world.
+                techniques.
               </p>
             </div>
           )}
         </div>
+
         <div
-          className={showInfo3 ? "course_card active" : "course_card"}
+          className={`bg-yellow-300 p-4 relative rounded-lg shadow-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
+            showInfo3 ? "shadow-2xl" : ""
+          }`}
           onMouseEnter={() => handleOpenInfo(3)}
           onMouseLeave={() => handleCloseInfo(3)}
         >
-          <div className="courses_img">
-            <img src={marketing} alt="digital marketing" />
-            <div className="courses_icon">
-              <img className="fist" src={fist} alt="" />
+          <div className="relative">
+            <img
+              className="w-full h-48 object-cover rounded-md mb-4 transition-all duration-300 transform hover:scale-105"
+              src={marketing}
+              alt="digital marketing"
+            />
+            <div className="absolute bottom-4 left-4 bg-red-500 p-2 rounded-full transition-transform duration-300">
+              <img className="w-6" src={fist} alt="" />
             </div>
           </div>
-          <h3 className="course_info">Digital Marketing</h3>
+          <h3 className="text-indigo-700 font-bold text-lg">Digital Marketing</h3>
           {showInfo3 && (
-            <div className="course_info_details3">
-              <p className="course_details_data">
+            <div className="absolute inset-0 bg-blue-50 p-4 rounded-lg z-10 overflow-auto opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <p className="font-semibold text-sm">
                 Elevate your marketing prowess with AliliTechAfrica's digital
-                marketing courses. Dive into the dynamic world of online
-                marketing, learning essential strategies and tactics to drive
-                results. From SEO and social media marketing to content creation
-                and PPC advertising, our courses cover all facets of digital
-                marketing. Gain practical insights, hands-on experience, and
-                industry-relevant certifications that empower you to excel in
-                the digital landscape. Whether you're a marketer seeking to
-                upskill or a business owner looking to expand your online
-                presence, our courses are designed to help you achieve your
-                goals.
+                marketing courses.
               </p>
             </div>
           )}

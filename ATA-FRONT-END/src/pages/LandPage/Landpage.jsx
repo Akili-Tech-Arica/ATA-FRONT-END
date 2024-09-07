@@ -1,7 +1,7 @@
 import React from 'react';
 import "./LandPage.css";
-import course from '../../assets/A2.png'; // Ensure this path is correct
-import africanPrint from '../../assets/imagetest.webp'; // Ensure this path is correct
+import course from '../../assets/Asset_1-removebg-preview.png'; // Ensure this path is correct
+import africanPrint from '../../assets/ATA 3.jpg'; // Ensure this path is correct
 import triangleAsset from '../../assets/A24.jpeg'; // Replace with actual path to your asset
 function Landpage() {
   return (
@@ -17,9 +17,7 @@ function Landpage() {
       <div className="triangle-container">
         <div className="african-print" style={{ backgroundImage: `url(${africanPrint})` }}></div>
       </div>
-      {/* Adding the triangles at the toon's feet */}
-      <img src={triangleAsset} alt="Triangles decoration" className="triangles-at-feet" />
-      {/* ... */}
+      
     </div>
   );
 }

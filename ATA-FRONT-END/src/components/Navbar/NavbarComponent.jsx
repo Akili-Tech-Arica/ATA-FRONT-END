@@ -40,7 +40,7 @@ function NavbarComponent() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse" onClick={closeMenu}>
           <img src={logo} className="h-12 md:h-16" alt="Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Your Brand</span>
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">ATA</span>
         </NavLink>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button

@@ -4,7 +4,7 @@ import coding from "../../assets/courses_coding.jpg";
 function Services() {
   return (
     <div id="services" className="bg-gray-100 py-16 px-4">
-      <h1 className="text-center font-bold text-3xl text-indigo-700 mb-6 font-serif">Our Services</h1>
+      <h1 className="text-center font-bold text-3xl text--700 mb-6 font-serif">Our Services</h1>
       <h4 className="text-center text-xl font-light mb-12 text-gray-700">
         We provide accessible, transformative digital training that's designed for Africa
       </h4>

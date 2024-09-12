@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'navy-blue': '#001f3f',
+      },
+
       animation: {
         blob: "blob 7s infinite",
       },

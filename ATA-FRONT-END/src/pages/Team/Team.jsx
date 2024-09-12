@@ -1,6 +1,6 @@
 import React from "react";
 import coding from "../../assets/courses_coding.jpg";
-import africa from "../../assets/Picture5.png";
+import africa from "../../assets/ATA 3.jpg";
 import sideImg from "../../assets/Asset_5-removebg-preview-l.png";
 import sideLeft from "../../assets/Asset_5-removebg-preview.png";
 

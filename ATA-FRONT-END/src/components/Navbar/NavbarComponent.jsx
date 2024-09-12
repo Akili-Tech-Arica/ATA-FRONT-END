@@ -1,90 +1,152 @@
-import React, { useState, useEffect, useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { Link } from "react-scroll";
-import logo from "../../assets/logo2.png";
+import React, { useState, useEffect } from 'react';
+import { useLocation, NavLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
+import { Disclosure } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import logo from '../../assets/logo2.png';
 
-function NavbarComponent() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const navbarRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const navToggle = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  const scrollTo = () => {
-    navigate("/");
-    closeMenu();
-  };
-
-  return (
-    <nav ref={navbarRef} className="bg-indigo-800 border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse" onClick={closeMenu}>
-          <img src={logo} className="h-12 md:h-16" alt="Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">ATA</span>
-        </NavLink>
-        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            onClick={navToggle}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-          </button>
-        </div>
-        <div className={`items-center justify-between ${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto md:order-1`} id="navbar-user">
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-indigo-800 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <NavLink to="/" className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:bg-transparent md:p-0" aria-current="page" onClick={closeMenu}>Home</NavLink>
-            </li>
-            <li>
-              <Link to="about" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>About</Link>
-            </li>
-            <li>
-              <Link to="courses" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>Courses</Link>
-            </li>
-            <li>
-              <Link to="contacts" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>Contacts</Link>
-            </li>
-            <li>
-              <Link to="services" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>Services</Link>
-            </li>
-            <li>
-              <NavLink to="/blogspace" className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" onClick={closeMenu}>Blogspace</NavLink>
-            </li>
-            <li>
-              <Link to="motivation" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>Motivation</Link>
-            </li>
-            <li>
-              <Link to="trainers" onClick={scrollTo} className="block py-2 px-3 text-white hover:text-yellow-400 rounded md:p-0" smooth={true} duration={500}>Trainers</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
 }
 
-export default NavbarComponent;
+export default function NavbarComponent() {
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState(location.pathname);
+
+  useEffect(() => {
+    // Update active item based on current path
+    setActiveItem(location.pathname);
+  }, [location]);
+
+  const handleScroll = (href) => {
+    setActiveItem(`#${href}`);
+  };
+
+  const navigation = [
+    { name: 'Home', href: 'home', scroll: true },
+    { name: 'About', href: 'about', scroll: true },
+    { name: 'Courses', href: 'courses', scroll: true },
+    { name: 'Contacts', href: 'contacts', scroll: true },
+    { name: 'Services', href: 'services', scroll: true },
+    { name: 'Blogspace', href: '/blogspace', scroll: false }, 
+    { name: 'Motivation', href: 'motivation', scroll: true },
+    { name: 'Trainers', href: 'trainers', scroll: true },
+  ];
+
+  return (
+    <Disclosure as="nav" className="fixed top-0 left-0 right-0 bg-navy-blue z-50">
+      {({ open }) => (
+        <>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 cursor-pointer">
+            <div className="relative flex h-20 items-center justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex flex-1 items-center justify-between sm:items-stretch">
+                <div className="flex flex-shrink-0 items-center">
+                  <Link to="home" smooth={true} duration={500} onClick={() => setActiveItem('/home')}>
+                    <img className="block h-12 w-auto" src={logo} alt="ATA" />
+                  </Link>
+                </div>
+
+                {/* Add a decorative text here */}
+                <div className="hidden sm:flex flex-grow justify-center items-center">
+                  <h1 className="text-white text-2xl font-semibold">Akili Tech Africa</h1>
+                </div>
+
+                <div className="flex flex-1 items-center justify-between sm:items-stretch">
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4">
+                      {navigation.map((item) => (
+                        item.scroll ? (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            onClick={() => handleScroll(item.href)}
+                            className={classNames(
+                              activeItem === `#${item.href}`
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'rounded-md px-3 py-2 text-lg font-medium'
+                            )}
+                            smooth={true}
+                            duration={500}
+                          >
+                            {item.name}
+                          </Link>
+                        ) : (
+                          <NavLink
+                            key={item.name}
+                            to={item.href}
+                            className={({ isActive }) =>
+                              classNames(
+                                isActive
+                                  ? 'bg-gray-900 text-white'
+                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                'rounded-md px-3 py-2 text-lg font-medium'
+                              )
+                            }
+                            onClick={() => setActiveItem(item.href)}
+                          >
+                            {item.name}
+                          </NavLink>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Disclosure.Panel className="sm:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {navigation.map((item) => (
+                item.scroll ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => handleScroll(item.href)}
+                    className={classNames(
+                      activeItem === `#${item.href}`
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block rounded-md px-3 py-2 text-base font-medium'
+                    )}
+                    smooth={true}
+                    duration={500}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <NavLink
+                    key={item.name}
+                    to={item.href}
+                    className={({ isActive }) =>
+                      classNames(
+                        isActive
+                          ? 'bg-gray-900 text-white'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'block rounded-md px-3 py-2 text-base font-medium'
+                      )
+                    }
+                    onClick={() => setActiveItem(item.href)}
+                  >
+                    {item.name}
+                  </NavLink>
+                )
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  );
+}

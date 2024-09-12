@@ -52,7 +52,7 @@ export default function Contact() {
 
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full">
         <div className="lg:flex">
-          <div className="lg:w-2/5 bg-gradient-to-br from-purple-600 to-indigo-600 p-12 lg:p-16 text-white">
+          <div className="lg:w-2/5 bg-gradient-to-br from-purple-600 to-indigo-600  p-12 lg:p-16 text-white">
             <h2 className="text-5xl font-bold mb-8">Get in Touch</h2>
             <p className="text-xl mb-8">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
             <div className="mt-16 space-y-6">
@@ -71,7 +71,7 @@ export default function Contact() {
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
                 </div>
-                <span className="text-lg">contact@example.com</span>
+                <span className="text-lg">info@ata.com</span>
               </div>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-6">
@@ -152,7 +152,7 @@ export default function Contact() {
               <div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 px-8 rounded-lg text-xl font-semibold hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-yellow-600 to-indigo-600  text-white py-4 px-8 rounded-lg text-xl font-semibold hover:from--700 hover:to-indigo-700 to-yellow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out flex items-center justify-center"
                 >
                   <Send className="mr-3 h-6 w-6" />
                   Send Message

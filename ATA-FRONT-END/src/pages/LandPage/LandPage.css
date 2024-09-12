@@ -7,7 +7,15 @@
   position: relative;
   background-color: #F0F2F5;
   min-height: 100vh; /* Cover the full viewport height */
+  display: flex;.land_page {
+  position: relative;
+  background-color: #F0F2F5;
+  min-height: 100vh; /* Cover the full viewport height */
   display: flex;
+  padding-top: 60px; /* Adjust to navbar height */
+  padding-left: 5%; /* Added padding to push content to the right */
+  color: #000000;
+}
   padding-top: 60px; /* Adjust to navbar height */
   padding-left: 5%; /* Added padding to push content to the right */
   color: #000000;
@@ -93,15 +101,7 @@
     height: 100%;
     overflow: hidden;
   }
-  .triangles-at-feet {
-    position: absolute;
-    bottom: 5%; /* Position from the bottom of the parent element */
-    right:80%; /* Move to the right of the parent element */
-    width: 40px; /* Resize the width of the image */
-    height: auto; /* Keep the aspect ratio of the image */
-    transform: translateX(50%); /* Adjust the horizontal position */
-    z-index: 10; /* Keep the triangles above other elements */
-  }
+
   /* African print with the triangular shape */
   .african-print {
     position: absolute;

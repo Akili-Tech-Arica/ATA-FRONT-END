@@ -25,18 +25,18 @@ function Courses() {
   };
 
   return (
-    <div id="courses" className="bg-gray-100 py-8 px-6 relative">
+    <div id="courses" className="relative py-16 bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200 overflow-hidden">
       <img
         className="absolute bottom-0 left-0 w-24 h-24 object-cover"
         src={sideImg}
         alt=""
       />
-      <div className="text-center">
-        <h1 className="font-bold text-3xl text-indigo-700 font-serif mb-8">
+      <div className="text-center mb-8">
+        <h1 className="font-bold text-3xl text-indigo-700 font-serif">
           Explore Our Courses
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
         <div
           className={`bg-yellow-300 p-4 relative rounded-lg shadow-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
             showInfo1 ? "shadow-2xl" : ""
@@ -124,6 +124,8 @@ function Courses() {
           )}
         </div>
       </div>
+      {/* White gradient overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white via-transparent to-transparent"></div>
     </div>
   );
 }

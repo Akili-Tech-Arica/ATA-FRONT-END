@@ -1,8 +1,8 @@
 import React from 'react';
 import "./LandPage.css";
-import course from '../../assets/Asset_1-removebg-preview.png'; // Ensure this path is correct
-import africanPrint from '../../assets/ATA 3.jpg'; // Ensure this path is correct
-import triangleAsset from '../../assets/A24.jpeg'; // Replace with actual path to your asset
+import course from '../../assets/Asset_1-removebg-preview.png'; 
+import africanPrint from '../../assets/ATA 3.jpg'; 
+import triangleAsset from '../../assets/A24.jpeg'; 
 function Landpage() {
   return (
     <div className="land_page">

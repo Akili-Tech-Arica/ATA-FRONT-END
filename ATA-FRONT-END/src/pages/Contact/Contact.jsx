@@ -38,7 +38,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200 flex items-center justify-center">
+    <div id="contacts" className="relative min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200 flex items-center justify-center">
       <img
         className="absolute bottom-4 left-0 w-20 h-40 object-cover opacity-75"
         src={sideImg}

@@ -1,7 +1,5 @@
 import React from 'react';
-import course from '../../assets/Asset_1-removebg-preview.png';
 import africanPrint from '../../assets/ATA 3.jpg';
-import bgPattern from '../../assets/african_background.png'; // Add an African-inspired background image
 
 function LandingPage() {
   return (

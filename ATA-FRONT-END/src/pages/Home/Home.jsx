@@ -10,7 +10,7 @@ import Online from "../Online/Online";
 import Contact from "../Contact/Contact";
 function Home() {
   return (
-    <div>
+    <div id="home">
       <Landpage />
       <About />
       <Courses />

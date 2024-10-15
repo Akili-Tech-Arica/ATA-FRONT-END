@@ -1,4 +1,3 @@
 [build]
-  base = "ATA-FRONT-END/ATA-FRONT-END"
-  publish = "ATA-FRONT-END/ATA-FRONT-END/dist"
-  command = "npm run build"
+  publish = "dist"           # Adjusted relative to the netlify.toml location
+  command = "npm run build"  # This runs your build command

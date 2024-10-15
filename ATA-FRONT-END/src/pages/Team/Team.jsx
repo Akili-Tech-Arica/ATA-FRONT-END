@@ -7,7 +7,6 @@ import sideLeft from "../../assets/Asset_5-removebg-preview.png";
 function Team() {
   return (
     <div className="relative bg-yellow-500 py-12 px-4 sm:px-6 lg:px-8">
-      {/* Side images */}
       <img
         className="absolute bottom-4 left-0 w-20 h-40 object-cover"
         src={sideImg}
@@ -24,7 +23,6 @@ function Team() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
-        {/* Team member card */}
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 ease-in-out hover:scale-105 w-full max-w-sm mx-auto">
           <div
             className="w-full h-40 bg-cover bg-center"
@@ -44,7 +42,6 @@ function Team() {
           />
         </div>
 
-        {/* Second Team member card */}
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 ease-in-out hover:scale-105 w-full max-w-sm mx-auto">
           <div
             className="w-full h-40 bg-cover bg-center mb-4"
@@ -64,7 +61,6 @@ function Team() {
           />
         </div>
 
-        {/* Third Team member card */}
         <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 transition-transform duration-300 ease-in-out hover:scale-105 w-full max-w-sm mx-auto">
           <div
             className="w-full h-40 bg-cover bg-center mb-4"

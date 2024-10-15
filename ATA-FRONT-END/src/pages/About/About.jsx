@@ -44,7 +44,7 @@ function About() {
           <div className="w-full md:w-1/4 flex justify-center mb-8 md:mb-0">
             <img 
               className="w-2/3 md:w-full max-w-xs object-contain" 
-              src={course4} 
+              src={course3} 
               alt="Course 4 image" 
               style={{ mixBlendMode: 'multiply' }}
             />
@@ -60,7 +60,7 @@ function About() {
           <div className="w-full md:w-1/4 flex justify-center">
             <img 
               className="w-2/3 md:w-full max-w-xs object-contain" 
-              src={course3} 
+              src={course4} 
               alt="Course 3 image"
             />
           </div>

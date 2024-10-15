@@ -1,0 +1,4 @@
+[build]
+  base = "ATA-FRONT-END/ATA-FRONT-END"
+  publish = "ATA-FRONT-END/ATA-FRONT-END/dist"
+  command = "npm run build"
